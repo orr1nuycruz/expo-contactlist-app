@@ -73,11 +73,15 @@ const EditContactPage = (props: any) => {
                     style={{ margin: 10, }}
                     title="Submit"
                     onPressIn={() => {
-                        // const contact = {"id": Math.floor(Math.random() * 999) + 1,"email": email, "firstName": firstName, "lastName": lastName, "phone": phone};
+                        const contact = {"id": Math.floor(Math.random() * 999) + 1,
+                        "email": (email == "") ? JSON.parse(data.contactdata).email : email, 
+                        "firstName":(firstName =="") ? JSON.parse(data.contactdata).firstName : firstName,
+                        "lastName":(lastName =="") ?  JSON.parse(data.contactdata).lastName : lastName,
+                         "phone": (phone == "") ? JSON.parse(data.contactdata).phone : phone};
 
-                        // const jsonvalue = JSON.stringify(contactObj)
-                        console.log(contactObj)
-                        storeInObject(data.contactid, contactObj);
+                        // const jsonvalue = JSON.stringify(contact)
+                        // console.log(contactObj)
+                        storeInObject(data.contactid, contact);
 
 
                         navigation.navigate("CONTACTINTRO");
